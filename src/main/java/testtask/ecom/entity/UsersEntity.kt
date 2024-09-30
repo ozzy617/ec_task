@@ -4,18 +4,25 @@ import jakarta.persistence.*
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
-import kotlin.reflect.jvm.internal.impl.descriptors.deserialization.PlatformDependentDeclarationFilter.All
 
 @Entity
 @Table(name = "users")
-data class UserEntity(
+data class UsersEntity(
         @Id
         @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_id_seq")
         @SequenceGenerator(name = "users_id_seq", sequenceName = "users_id_seq", allocationSize = 1)
         var id : Long? = null,
 
-        val username : String,
-        val password : String,
+        @Column(unique = true, nullable = false, name = "username")
+        private val username : String,
+
+        private val password : String,
+
+        val name : String? = null,
+
+        val surname : String? = null,
+
+        val location : String? = null,
 
 //        @Column(name = "role")
 //        @ElementCollection(fetch = FetchType.EAGER)
@@ -28,7 +35,8 @@ data class UserEntity(
         val role : Roles,
 
         @OneToMany(mappedBy = "user", cascade = [CascadeType.ALL])
-        val orders : List<Order> = mutableListOf()
+        val orders : List<OrderEntity> = mutableListOf()
+
 ) : UserDetails {
         override fun getAuthorities(): List<GrantedAuthority> {
                 return listOf(SimpleGrantedAuthority(role.name))
@@ -49,4 +57,9 @@ data class UserEntity(
 
         override fun isEnabled(): Boolean {
                 return true        }
+
+        override fun toString(): String {
+                return "UserInfoEntity(id=$id, username='$username', password='$password')"
+        }
 }
+

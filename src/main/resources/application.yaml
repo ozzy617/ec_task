@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=db_schema
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  sql:
+    init:
+      schema-locations: classpath:schema.sql
+      data-locations: classpath:data.sql
+      mode: always
+token:
+  signing:
+    key: aGpmYmRoamZiZGdoZmRoc2Z1dXU0NDRiaGZkc2JraGp2ZGJza2h2anNk
+
+

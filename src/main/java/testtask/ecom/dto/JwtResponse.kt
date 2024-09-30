@@ -1,4 +1,5 @@
 package testtask.ecom.dto
 
-class JwtResponse {
-}
+data class JwtResponse (
+        val token: String
+)

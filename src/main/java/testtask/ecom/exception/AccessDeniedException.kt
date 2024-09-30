@@ -1,4 +1,3 @@
 package testtask.ecom.exception
 
-class AccessDeniedException {
-}
+class AccessDeniedException : RuntimeException()

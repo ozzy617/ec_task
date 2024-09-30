@@ -1,4 +1,3 @@
 package testtask.ecom.exception
 
-class ResourceMappingException {
-}
+class ResourceMappingException(message: String?) : RuntimeException(message)

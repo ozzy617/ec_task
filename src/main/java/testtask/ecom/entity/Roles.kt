@@ -1,4 +1,5 @@
 package testtask.ecom.entity
 
-class Roles {
+enum class Roles {
+    ROLE_USER, ROLE_ADMIN
 }

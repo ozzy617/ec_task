@@ -1,4 +1,3 @@
--- create database testtask;
 CREATE SCHEMA IF NOT EXISTS db_schema;
 create table if not exists db_schema.users
 (
@@ -9,7 +8,7 @@ create table if not exists db_schema.users
     surname varchar(255),
     role varchar(255),
     location varchar(255)
-);
+    );
 
 create table if not exists db_schema.orders
 (
@@ -17,7 +16,7 @@ create table if not exists db_schema.orders
     user_id bigint references db_schema.users(id),
     status varchar(255) not null,
     created timestamp
-);
+    );
 
 create table if not exists db_schema.product
 (
@@ -25,7 +24,7 @@ create table if not exists db_schema.product
     title varchar(255) not null,
     quantity bigint,
     price decimal
-);
+    );
 
 create table if not exists db_schema.goods
 (
@@ -33,7 +32,7 @@ create table if not exists db_schema.goods
     title varchar(255) not null,
     quantity bigint,
     price decimal
-);
+    );
 
 create table if not exists db_schema.orders_goods
 (
@@ -42,4 +41,14 @@ create table if not exists db_schema.orders_goods
     good_id BIGINT references db_schema.goods(id)
 );
 
-INSERT INTO db_schema.users (id, username, password, role, name, surname, location) VALUES (1, 'admin', '12345', 'ROLE_ADMIN', 'Vadim', 'Vadimov', 'Moscow');
+create sequence users_id_seq;
+
+create sequence orders_goods_seq;
+
+create sequence product_seq;
+
+create sequence order_seq;
+
+create sequence goods_id_seq;
+
+

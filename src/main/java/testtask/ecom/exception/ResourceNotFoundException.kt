@@ -1,4 +1,3 @@
 package testtask.ecom.exception
 
-class ResourceNotFoundException {
-}
+class ResourceNotFoundException(message: String?) : RuntimeException(message)
